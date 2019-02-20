@@ -1,10 +1,10 @@
 {
-    "id": "5c6db5a90284eb00013248c0",
-    "name": "Api",
-    "slug": "app",
-    "api_id": "94bb6a479a7c443672d1010b6b1278d4",
+    "id": "5c6dcf590284eb000172c813",
+    "name": "Vip",
+    "slug": "vip",
+    "api_id": "996993fc9879484469a7c383ebdbf6c4",
     "org_id": "5c6db3cf0284eb0001bf02fc",
-    "use_keyless": true,
+    "use_keyless": false,
     "use_oauth2": false,
     "use_openid": false,
     "openid_options": {
@@ -17,8 +17,8 @@
         "auth_login_redirect": ""
     },
     "auth": {
-        "use_param": false,
-        "param_name": "",
+        "use_param": true,
+        "param_name": "key",
         "use_cookie": false,
         "cookie_name": "",
         "auth_header_name": "Authorization",
@@ -34,7 +34,7 @@
     "upstream_certificates": {},
     "pinned_public_keys": {},
     "enable_jwt": false,
-    "use_standard_auth": false,
+    "use_standard_auth": true,
     "enable_coprocess_auth": false,
     "jwt_signing_method": "",
     "jwt_source": "",
@@ -74,19 +74,6 @@
                 },
                 "use_extended_paths": true,
                 "extended_paths": {
-                    "white_list": [
-                        {
-                            "path": "/rand",
-                            "method_actions": {
-                                "GET": {
-                                    "action": "no_action",
-                                    "code": 200,
-                                    "data": "",
-                                    "headers": {}
-                                }
-                            }
-                        }
-                    ],
                     "internal": []
                 },
                 "global_headers": {
@@ -119,8 +106,8 @@
     },
     "proxy": {
         "preserve_host_header": false,
-        "listen_path": "/api",
-        "target_url": "http://secret:secret@app/api",
+        "listen_path": "/vip/",
+        "target_url": "http://app/api",
         "disable_strip_slash": false,
         "strip_listen_path": true,
         "enable_load_balancing": false,
@@ -216,8 +203,8 @@
     "config_data": {},
     "tag_headers": [],
     "global_rate_limit": {
-        "rate": 1,
-        "per": 1
+        "rate": 0,
+        "per": 0
     },
     "strip_auth_data": false
 }
