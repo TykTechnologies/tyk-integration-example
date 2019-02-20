@@ -1,9 +1,30 @@
-version: '3'
+version: '2'
 services:
   app:
     build: .
     volumes:
-        - .:/usr/src/app
+      - .:/usr/src/app
     ports:
-        - "8181:80"
-    command: ruby app.rb
+      - "8182:80"
+    command: rackup -p 80 -o 0.0.0.0
+    environment:
+      - TYK_API_KEY=$TYK_API_KEY
+      - TYK_API_ID=$TYK_API_ID
+  tyk_gateway:
+    image: "tykio/tyk-gateway:unstable"
+    volumes:
+      - ./confs/tyk.conf:/opt/tyk-gateway/tyk.conf
+    ports:
+      - "8183:8080"
+  tyk_dashboard:
+    image: "tykio/tyk-dashboard:unstable"
+    ports:
+      - "3000:3000"
+    environment:
+      - TYK_DB_LICENSEKEY=$TYK_LICENSE
+  tyk-pump:
+    image: "tykio/tyk-pump-docker-pub"
+  redis:
+    image: "redis"
+  mongo:
+    image: "mongo"
